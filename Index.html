@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Xeno | Ксено</title>
+<!-- favicon с вашей картинкой -->
+<link rel="icon" href="https://s10.aconvert.com/convert/p3r68-cdx67/abf00-pa18q.png" type="image/png" />
+<style>
+  body, html {
+    margin: 0; padding: 0; height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #6a0dad, #007bff);
+    color: #eee;
+    overflow-x: hidden;
+  }
+  .container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 15px;
+    backdrop-filter: blur(6px);
+    background-color: rgba(0,0,0,0.3);
+  }
+  /* Показываем вашу иконку на странице, круглая */
+  .favicon-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    object-fit: cover;
+    box-shadow: 0 0 10px #000a;
+  }
+
+  nav {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+  .tab {
+    padding: 12px 30px;
+    border-radius: 9999px;
+    border: none;
+    cursor: pointer;
+    background: #444;
+    color: #bbb;
+    font-weight: 700;
+    font-size: 16px;
+    transition: background-color 0.3s, color 0.3s;
+    user-select: none;
+  }
+  .tab.active {
+    background: #007bff;
+    color: #fff;
+    box-shadow: 0 0 10px #007bffaa;
+  }
+  .tab:hover:not(.active) {
+    background: #555;
+  }
+  .content {
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+  }
+  .content-section {
+    display: none;
+    animation: fadeInUp 0.5s ease forwards;
+  }
+  .content-section.active {
+    display: block;
+  }
+  .btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  .link-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 15px;
+    padding: 14px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow: 0 0 12px #007bff88;
+    transition: background-color 0.25s ease, transform 0.2s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    animation-fill-mode: forwards;
+  }
+  .link-btn:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+    box-shadow: 0 0 18px #0056b3cc;
+  }
+  .link-btn img {
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+  }
+  @keyframes fadeInUp {
+    from {
+      opacity: 0; transform: translateY(20px);
+    }
+    to {
+      opacity: 1; transform: translateY(0);
+    }
+  }
+  @media (max-width: 480px) {
+    .tab {
+      padding: 10px 20px;
+      font-size: 14px;
+    }
+    .link-btn {
+      font-size: 14px;
+      min-width: 220px;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <!-- Ваша иконка на странице -->
+  <img src="https://s10.aconvert.com/convert/p3r68-cdx67/abf00-pa18q.png" alt="Xeno Logo" class="favicon-img" />
+
+  <nav>
+    <button class="tab active" onclick="openTab('main', this)">Основное</button>
+    <button class="tab" onclick="openTab('admins', this)">Администраторы</button>
+  </nav>
+
+  <div class="content">
+    <section id="main" class="content-section active">
+      <div class="btn-group">
+        <a href="https://t.me/yourchannel" target="_blank" class="link-btn" style="animation-delay: 0.1s;">
+          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram" />
+          Наш телеграм канал
+        </a>
+        <a href="https://t.me/yourchat" target="_blank" class="link-btn" style="animation-delay: 0.3s;">
+          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram Chat" />
+          Наш чат в Телеграме
+        </a>
+        <a href="https://discord.gg/yourdiscord" target="_blank" class="link-btn" style="animation-delay: 0.5s;">
+          <img src="https://static.vecteezy.com/system/resources/previews/018/930/604/original/discord-logo-discord-icon-transparent-free-png.png" alt="Discord" />
+          Наш дискорд канал
+        </a>
+        <a href="https://www.tiktok.com/@xeno.executor" target="_blank" class="link-btn" style="animation-delay: 0.7s;">
+          <img src="https://cdn-icons-png.flaticon.com/512/3046/3046127.png" alt="TikTok" />
+          Наш ТикТок @xeno.executor
+        </a>
+      </div>
+    </section>
+
+    <section id="admins" class="content-section">
+      <p>Информация об администраторах будет здесь.</p>
+    </section>
+  </div>
+</div>
+
+<script>
+  function openTab(tabId, btn) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+
+    document.querySelectorAll('.content-section').forEach(section => {
+      section.classList.remove('active');
+      if(section.id === 'main') {
+        section.querySelectorAll('.link-btn').forEach(btn => {
+          btn.style.animation = 'none';
+          btn.style.opacity = 0;
+          btn.style.transform = 'translateY(20px)';
+        });
+      }
+    });
+    document.getElementById(tabId).classList.add('active');
+
+    if(tabId === 'main') {
+      const buttons = document.querySelectorAll('#main .link-btn');
+      buttons.forEach((btn, i) => {
+        btn.style.animation = 'none';
+        btn.offsetHeight;
+        btn.style.animation = `fadeInUp 0.5s ease forwards`;
+        btn.style.animationDelay = `${0.2 * i + 0.1}s`;
+      });
+    }
+  }
+
+  window.onload = () => {
+    const buttons = document.querySelectorAll('#main .link-btn');
+    buttons.forEach((btn, i) => {
+      btn.style.animation = `fadeInUp 0.5s ease forwards`;
+      btn.style.animationDelay = `${0.2 * i + 0.1}s`;
+    });
+  };
+</script>
+</body>
+</html>
